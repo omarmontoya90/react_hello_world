@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import cars from './data/cars.json'
 
 //function HelloWorld(props) {
 //  return <h2>{props.title}</h2>
@@ -58,7 +59,7 @@ class Counter extends Component {
   }
 }
 
-class Lists extends Component{
+class NumberLists extends Component{
    render(){
      const numbers = [1, 1, 2, 3];
      return (
@@ -70,6 +71,26 @@ class Lists extends Component{
        </div>
      )
    };
+}
+
+class ObjectList extends Component {
+  render(){
+    return(
+      <div>
+        <h2>Working Object Lists</h2>
+        <ul>
+          {cars.map( car =>{
+            return (
+              <li key={car.id}>
+                <p><strong>Name: </strong>{car.name}</p>
+                <p><strong>Company: </strong>{car.company}</p>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
 }
 
 function App() {
@@ -88,7 +109,9 @@ function App() {
         />
         <Counter initialCounter={25}/>
 
-        <Lists text="Working with lists"/>
+        <NumberLists text="Working with lists"/>
+
+        <ObjectList/>
       </header>
     </div>
   );
