@@ -58,6 +58,20 @@ class Counter extends Component {
   }
 }
 
+class Lists extends Component{
+   render(){
+     const numbers = [1, 1, 2, 3];
+     return (
+       <div>
+         <h2>{this.props.text}</h2>
+         {numbers.map( (number, index) =>{
+           return <p key={index}>Soy el numero {number}</p>
+         })}
+       </div>
+     )
+   };
+}
+
 function App() {
   return (
     <div className="App">
@@ -73,6 +87,8 @@ function App() {
           text="Hello World, I am using React in:"
         />
         <Counter initialCounter={25}/>
+
+        <Lists text="Working with lists"/>
       </header>
     </div>
   );
