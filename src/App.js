@@ -14,13 +14,44 @@ class HelloWorld extends Component {
     };
 }
 
+class Text extends Component {
+  render(){
+    const {
+      arrayOfNumbers,
+      isActivated,
+      multiply,
+      number,
+      objectWithInfo,
+      text
+    } = this.props
+
+    const textAccordingBoolean = isActivated ? "Activated" : "Disabled"
+    return (
+      <div>
+        <p>{text}</p>
+        <p>{number}</p>
+        <p>{arrayOfNumbers.join(', ')}</p>
+        <p>The app is {textAccordingBoolean}</p>
+        <p>Year is {objectWithInfo.year}</p>
+        <p>The result of operation {number}x2 is: {multiply(number)}</p>
+      </div>
+    )
+  }
+}
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <HelloWorld title="This is my Hello World"/>
-        <p>Hello World, I am using React</p>
+        <Text
+          arrayOfNumbers={[25, 6, 1990]}
+          isActivated
+          multiply={(number)=>number*2}
+          number={2020}
+          objectWithInfo={{year: 2020, century: 21}}
+          text="Hello World, I am using React in:"
+        />
       </header>
     </div>
   );
