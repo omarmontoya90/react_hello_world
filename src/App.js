@@ -38,6 +38,26 @@ class Text extends Component {
     )
   }
 }
+
+class Counter extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {counter: this.props.initialCounter};
+    setInterval(() => {
+      this.setState({counter: this.state.counter +1})
+    }, 1000);
+  }
+
+  render () {
+    return(
+      <div>
+        <h2>States</h2>
+        <span>{this.state.counter}</span>
+      </div>
+    )
+  }
+}
+
 function App() {
   return (
     <div className="App">
@@ -52,6 +72,7 @@ function App() {
           objectWithInfo={{year: 2020, century: 21}}
           text="Hello World, I am using React in:"
         />
+        <Counter initialCounter={25}/>
       </header>
     </div>
   );
