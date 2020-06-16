@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import cars from './data/cars.json'
 import Forms from './sections/forms'
+import PropTypes from 'prop-types'
 
 //function HelloWorld(props) {
 //  return <h2>{props.title}</h2>
@@ -137,12 +138,17 @@ class ChildrenBox extends Component {
 }
 
 class Article extends Component {
+  static propTypes = {
+    author: PropTypes.string.isRequired,
+    date: PropTypes.string
+  }
+
   render(){
     return(
       <section>
         <h2>{this.props.title}</h2>
         <p><em>Escrito por {this.props.author}</em></p>
-        <date>{this.props.date}</date>
+        <p>{this.props.date}</p>
         <article>{this.props.children}</article>
       </section>
     )
@@ -181,8 +187,7 @@ function App() {
           <Article
             author="Omar Montoya"
             date={new Date().toLocaleDateString()}
-            title="Learning Article"
-          >
+            title="Learning Article">
             <p>Learn any programming language is very funny</p>
           </Article>
         </div>
