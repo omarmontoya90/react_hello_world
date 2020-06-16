@@ -93,6 +93,21 @@ class ObjectList extends Component {
   }
 }
 
+class OnClickEvent extends Component{
+  handleClick(event){
+    alert("Hi There!!!")
+  }
+
+  render(){
+    return(
+      <div>
+        <h2>Events</h2>
+        <button onClick={this.handleClick}>Hi there!</button>
+      </div>
+    )
+  }
+}
+
 function App() {
   return (
     <div className="App">
@@ -112,6 +127,7 @@ function App() {
         <NumberLists text="Working with lists"/>
 
         <ObjectList/>
+        <OnClickEvent/>
       </header>
     </div>
   );
