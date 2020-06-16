@@ -7,11 +7,17 @@ class Forms extends Component {
     const twitterAccount = document.getElementById("twitter").value;
     console.log({name, twitterAccount});
   }
+
+  handleChange (event) {
+    console.log("handleChange")
+    console.log(event.target.checked)
+  }
+
   render(){
       return(
           <div>
             <h2>First Form</h2>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <p>
                 <label htmlFor="name">Name: </label>
                 <input 
@@ -30,8 +36,18 @@ class Forms extends Component {
                   placeholder="Your Twitter Account"
                 />
               </p>
+
+              <p>
+                <label>
+                  <input
+                    type="checkbox"
+                    onChange={this.handleChange}
+                  />
+                Accepted Terms
+                </label>
+              </p>
+
               <button
-                onClick={this.handleClick}
                 style={{borderRadius: 45, paddingTop: 5, paddingBottom: 5, paddingLeft: 30, paddingRight: 30}}
               >
                 Send
