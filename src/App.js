@@ -44,6 +44,7 @@ class Counter extends Component {
   constructor (props) {
     super(props);
     this.state = {counter: this.props.initialCounter};
+
     setInterval(() => {
       this.setState({counter: this.state.counter +1})
     }, 1000);
@@ -94,8 +95,18 @@ class ObjectList extends Component {
 }
 
 class OnClickEvent extends Component{
+  constructor() {
+    super()
+    this.state = {mouseX: 0, mouseY: 0}
+  }
+
   handleClick(event){
     alert("Hi There!!!")
+  }
+
+  handleMouseMove(event){
+    const {clientX, clientY} = event
+    this.setState({mouseX: clientX, mouseY: clientY})
   }
 
   render(){
@@ -103,6 +114,12 @@ class OnClickEvent extends Component{
       <div>
         <h2>Events</h2>
         <button onClick={this.handleClick}>Hi there!</button>
+        <div
+          onMouseMove={this.handleMouseMove.bind(this)}
+          style={{width: 250, border: '1px solid #000', marginTop: 10, padding: 10}}
+        >
+          <p>{this.state.mouseX}, {this.state.mouseY}</p>
+        </div>
       </div>
     )
   }
