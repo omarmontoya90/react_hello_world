@@ -1,16 +1,25 @@
 import React, {Component} from 'react'
 
 class Forms extends Component {
-  handleClick(event){
-    event.preventDefault();
-    const name = document.getElementById("name").value;
-    const twitterAccount = document.getElementById("twitter").value;
-    console.log({name, twitterAccount});
+
+  constructor(){
+    super();
+    this.state = {
+      inputName: '',
+      inputTwitter: '',
+      inputTerms: true
+    }
   }
 
-  handleChange (event) {
+  handleSubmit = (event)=>{
+    event.preventDefault();
+    console.log(this.state);
+  }
+
+  handleChange = (event) => {
     console.log("handleChange")
     console.log(event.target.checked)
+    this.setState({inputTerms: event.target.checked})
   }
 
   render(){
@@ -25,8 +34,10 @@ class Forms extends Component {
                   type="text"
                   name="userName"
                   placeholder="Your name"
+                  onChange={(event) => this.setState({inputName: event.target.value})}
                 />
               </p>
+
               <p>
                 <label htmlFor="twitter">Twitter Account: </label>
                 <input
@@ -34,12 +45,14 @@ class Forms extends Component {
                   type="text"
                   name="twitterAccount"
                   placeholder="Your Twitter Account"
+                  onChange={(event) => this.setState({inputTwitter: event.target.value})}
                 />
               </p>
 
               <p>
                 <label>
                   <input
+                    checked={this.state.inputTerms}
                     type="checkbox"
                     onChange={this.handleChange}
                   />
