@@ -13,7 +13,7 @@ class Forms extends Component {
             <h2>First Form</h2>
             <form>
               <p>
-                <label>Name: </label>
+                <label htmlFor="name">Name: </label>
                 <input 
                   id="name"
                   type="text"
@@ -22,7 +22,7 @@ class Forms extends Component {
                 />
               </p>
               <p>
-                <label>Twitter Account: </label>
+                <label htmlFor="twitter">Twitter Account: </label>
                 <input
                   id="twitter"
                   type="text"
@@ -30,7 +30,12 @@ class Forms extends Component {
                   placeholder="Your Twitter Account"
                 />
               </p>
-              <button onClick={this.handleClick}>Send</button>
+              <button
+                onClick={this.handleClick}
+                style={{borderRadius: 45, paddingTop: 5, paddingBottom: 5, paddingLeft: 30, paddingRight: 30}}
+              >
+                Send
+              </button>
               
             </form>
           </div>
