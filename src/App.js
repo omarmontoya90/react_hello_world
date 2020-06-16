@@ -126,6 +126,29 @@ class OnClickEvent extends Component{
   }
 }
 
+class ChildrenBox extends Component {
+  render(){
+    return(
+      <div style={{border: '1px solid #09f', margin: 5, padding: 5}}>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+
+class Article extends Component {
+  render(){
+    return(
+      <section>
+        <h2>{this.props.title}</h2>
+        <p><em>Escrito por {this.props.author}</em></p>
+        <date>{this.props.date}</date>
+        <article>{this.props.children}</article>
+      </section>
+    )
+  }
+}
+
 function App() {
   return (
     <div className="App">
@@ -148,6 +171,21 @@ function App() {
         <OnClickEvent/>
 
         <Forms/>
+
+        <div>
+          <h2>Children Props</h2>
+          <ChildrenBox>Hi, I am a Children!!!</ChildrenBox>
+          <ChildrenBox>This is a other Children</ChildrenBox>
+
+          <h2>Children Layout</h2>
+          <Article
+            author="Omar Montoya"
+            date={new Date().toLocaleDateString()}
+            title="Learning Article"
+          >
+            <p>Learn any programming language is very funny</p>
+          </Article>
+        </div>
       </header>
     </div>
   );
