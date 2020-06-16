@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import cars from './data/cars.json'
+import Forms from './sections/forms'
 
 //function HelloWorld(props) {
 //  return <h2>{props.title}</h2>
@@ -67,7 +68,7 @@ class NumberLists extends Component{
        <div>
          <h2>{this.props.text}</h2>
          {numbers.map( (number, index) =>{
-           return <p key={index}>Soy el numero {number}</p>
+           return <p key={index}>I am number {number}</p>
          })}
        </div>
      )
@@ -145,6 +146,8 @@ function App() {
 
         <ObjectList/>
         <OnClickEvent/>
+
+        <Forms/>
       </header>
     </div>
   );
