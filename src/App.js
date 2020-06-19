@@ -46,7 +46,9 @@ class Counter extends Component {
   constructor (props) {
     super(props);
     this.state = {counter: this.props.initialCounter};
+  }
 
+  componentDidMount(){
     setInterval(() => {
       this.setState({counter: this.state.counter +1})
     }, 1000);
@@ -139,7 +141,7 @@ class ChildrenBox extends Component {
 
 class Article extends Component {
   static propTypes = {
-    author: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired, //Prop mandatory
     date: PropTypes.string
   }
 
