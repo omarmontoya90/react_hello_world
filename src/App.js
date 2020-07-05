@@ -157,6 +157,28 @@ class Article extends Component {
   }
 }
 
+function BitCoinPrice (props) {
+
+  const _renderCurrencies = () => {
+    const { bpi } = props
+    const currencies = Object.keys(bpi)
+    return currencies.map( currency => (
+        <div key={currency}>
+          1 BTC is {bpi[currency].rate}
+          <span>{currency}</span>
+        </div>
+      )
+    )
+  }
+
+  return(
+    <div>
+      <h2>BitCoinPrice</h2>
+      {_renderCurrencies()}
+    </div>
+  )
+}
+
 class FetchExample extends Component{
   state = {bpi: {}}
 
@@ -168,26 +190,8 @@ class FetchExample extends Component{
         this.setState({ bpi })
       })
   }
-
-  _renderCurrencies(){
-    const { bpi } = this.state
-    const currencies = Object.keys(bpi)
-    return currencies.map( currency => (
-        <div key={currency}>
-          1 BTC is {bpi[currency].rate}
-          <span>{currency}</span>
-        </div>
-      )
-    )
-  }
-
   render(){
-    return(
-      <div>
-        <h2>Fetch API Example</h2>
-        {this._renderCurrencies()}
-      </div>
-    )
+    return <BitCoinPrice bpi={this.state.bpi} />
   }
 }
 
